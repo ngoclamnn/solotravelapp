@@ -1,0 +1,9 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "prettier.eslintIntegration": true,
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false,
+  "flow.useNPMPackagedFlow": true
+}
