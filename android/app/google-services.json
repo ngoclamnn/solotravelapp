@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1010916419755",
+    "firebase_url": "https://fir-sam-e97ad.firebaseio.com",
+    "project_id": "fir-sam-e97ad",
+    "storage_bucket": "fir-sam-e97ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010916419755:android:c2d4fd282c8f7eee",
+        "android_client_info": {
+          "package_name": "com.solotravellerapp.mytravelapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010916419755-9raf4k95l98ih3llkm6va49tptu1euk5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3RQYrqcIlk3RLSQLRJgC7SMP-ltfqdfw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
