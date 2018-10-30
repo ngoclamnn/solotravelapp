@@ -1,21 +1,16 @@
-import React from 'react'
-import { StyleSheet, Platform, Image, Text, View } from 'react-native'
-import { SwitchNavigator } from 'react-navigation'
-// import the different screens
-import Loading from './account/loading'
-import SignUp from './account/signup'
-import Login from './account/login'
-import Main from './account/main'
-// create our app's navigation stack
-const App = SwitchNavigator(
-  {
-    Loading,
-    SignUp,
-    Login,
-    Main
-  },
-  {
-    initialRouteName: 'Loading'
+// @flow
+
+import React, { Component } from 'react'
+import RootNavigation from './RootNavigation'
+
+// For network debugging
+global.XMLHttpRequest = global.originalXMLHttpRequest ? global.originalXMLHttpRequest : global.XMLHttpRequest
+global.FormData = global.originalFormData ? global.originalFormData : global.FormData
+
+class App extends Component<{}> {
+  render () {
+    return <RootNavigation />
   }
-)
+}
+
 export default App

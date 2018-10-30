@@ -1,5 +1,5 @@
-// flow-typed signature: af0dd570e0ba9ed98b0de050aee3e136
-// flow-typed version: 3b86451010/react-navigation_v2.x.x/flow_>=v0.60.x
+// flow-typed signature: def697ba0768fb3ff4c8d96159cd485c
+// flow-typed version: 83d99d0280/react-navigation_v2.x.x/flow_>=v0.60.x
 
 // @flow
 
@@ -536,7 +536,16 @@ declare module 'react-navigation' {
       eventName: string,
       callback: NavigationEventCallback
     ) => NavigationEventSubscription,
-    getParam: (paramName: string, fallback?: any) => any,
+    getParam: <ParamName>(
+      paramName: ParamName,
+      fallback?: $ElementType<$PropertyType<{|
+        ...{| params: {| [ParamName]: void |} |},
+        ...$Exact<S>,
+      |}, 'params'>, ParamName>,
+    ) => $ElementType<$PropertyType<{|
+      ...{| params: {| [ParamName]: void |} |},
+      ...$Exact<S>,
+    |}, 'params'>, ParamName>,
     dangerouslyGetParent: () => NavigationScreenProp<*>,
     isFocused: () => boolean,
     // Shared action creators that exist for all routers

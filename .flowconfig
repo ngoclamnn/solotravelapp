@@ -20,6 +20,7 @@
 .*/node_modules/metro/.*
 .*/node_modules/metro-memory-fs/.*
 .*/node_modules/react-native/Libraries/react-native/react-native-implementation.js
+.*/node_modules/react-native-firebase/dist/index.js.flow
 
 
 [include]
