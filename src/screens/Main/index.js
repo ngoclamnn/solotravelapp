@@ -3,6 +3,7 @@ import React from 'react'
 import { StyleSheet, Platform, Image, Button, Text, View, ActivityIndicator } from 'react-native'
 import { GraphRequest, GraphRequestManager, AccessToken } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase'
+import ROUTES from 'config/routes'
 
 export default class Main extends React.Component {
   state = { currentUser: null, userData: null }
@@ -79,7 +80,10 @@ export default class Main extends React.Component {
             < Image style={{ width: 200, height: 200 }} source={{ uri: userData.photoURL }} />
             <Text>
               Hi {currentUser && currentUser.email}!
-        </Text>
+            </Text>
+            <Button
+              title='Start chat...'
+              onPress={() => this.props.navigation.navigate(ROUTES.chat.routeName)} />
             <Button title='Logout' onPress={this.handleLogout} />
           </View>
         }

@@ -2,6 +2,7 @@ import { SwitchNavigator } from 'react-navigation'
 import Loading from 'screens/Loading'
 import SignUp from 'screens/SignUp'
 import Login from 'screens/Login'
+import Chat from 'screens/Chat'
 import MainNavigation from './MainNavigation'
 import ROUTES from 'config/routes'
 const App = SwitchNavigator(
@@ -17,6 +18,9 @@ const App = SwitchNavigator(
     },
     [ROUTES.main.routeName]: {
       screen: MainNavigation
+    },
+    [ROUTES.chat.routeName]: {
+      screen: Chat
     }
   },
   {

@@ -10,6 +10,9 @@ const ROUTES = {
   },
   main: {
     routeName: 'Main'
+  },
+  chat: {
+    routeName: 'Chat'
   }
 }
 
