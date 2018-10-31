@@ -8,7 +8,7 @@ type Props = {
 }
 
 export default class Loading extends Component<Props> {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <Text>Loading</Text>
@@ -16,7 +16,7 @@ export default class Loading extends Component<Props> {
       </View>
     )
   }
-  componentDidMount () {
+  componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       this.props.navigation.navigate(user ? 'Main' : 'SignUp')
     })
