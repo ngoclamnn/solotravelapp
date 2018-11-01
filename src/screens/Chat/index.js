@@ -17,13 +17,13 @@ class Chat extends React.Component<Props> {
   state = {
     messages: [],
   };
-
+  get firebaseChat() { return new FirebaseChat() }
   get user() {
     const { currentUser } = firebase.auth()
     console.log("Chat", currentUser)
     return {
       name: currentUser.email,
-      _id: FirebaseChat.shared.uid,
+      _id: this.firebaseChat.uid,
     };
   }
 
@@ -31,7 +31,7 @@ class Chat extends React.Component<Props> {
     return (
       <GiftedChat
         messages={this.state.messages}
-        onSend={FirebaseChat.shared.send}
+        onSend={this.firebaseChat.send}
         user={this.user}
       />
     );
@@ -39,15 +39,16 @@ class Chat extends React.Component<Props> {
 
   componentDidMount() {
     const { currentUser } = firebase.auth()
+    console.log("Chat666", currentUser)
     this.setState({ currentUser: currentUser })
-    FirebaseChat.shared.on(message =>
+    this.firebaseChat.on(message =>
       this.setState(previousState => ({
         messages: GiftedChat.append(previousState.messages, message),
       }))
     );
   }
   componentWillUnmount() {
-    FirebaseChat.shared.off();
+    this.firebaseChat.off();
   }
 }
 
