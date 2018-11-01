@@ -1,13 +1,31 @@
 
 import firebase from 'react-native-firebase'
 class FirebaseChat {
+  constructor() {
+
+  }
+
+
+
+  observeAuth = () =>
+    firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
+
+  onAuthStateChanged = user => {
+    if (!user) {
+      try {
+        firebase.auth().signInAnonymously();
+      } catch ({ message }) {
+        alert(message);
+      }
+    }
+  };
+
   get uid() {
     return (firebase.auth().currentUser || {}).uid;
   }
 
   get ref() {
-    const database = firebase.database().ref('messages')
-    return database;
+    return firebase.database().ref('messages');
   }
 
   parse = snapshot => {
@@ -19,16 +37,15 @@ class FirebaseChat {
       timestamp,
       text,
       user,
+      createdAt: Date.now()
     };
     return message;
   };
 
-  on = callback => {
-    const query = this.ref
-      .limitToLast(20).on('value', snapshot => console.log(snapshot))
-    console.log(callback)
-    //query.on('child_added', snapshot => console.log(snapshot));
-  }
+  on = callback =>
+    this.ref
+      .limitToLast(20)
+      .on('child_added', snapshot => callback(this.parse(snapshot)));
 
   get timestamp() {
     return firebase.database.ServerValue.TIMESTAMP;
@@ -53,4 +70,6 @@ class FirebaseChat {
     this.ref.off();
   }
 }
+
+FirebaseChat.shared = new FirebaseChat();
 export default FirebaseChat;

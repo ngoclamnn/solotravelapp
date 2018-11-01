@@ -19,7 +19,7 @@ export default class SignUp extends Component<any, State> {
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(result => console.log(result))
+      .then()
       .catch(error => this.setState({ errorMessage: error.message }))
   }
 
@@ -29,7 +29,6 @@ export default class SignUp extends Component<any, State> {
       if (result.isCancelled) {
         throw new Error('User cancelled request') // Handle this however fits the flow of your app
       }
-      console.log(result.grantedPermissions)
       // get the access token
       const data = await AccessToken.getCurrentAccessToken()
       if (!data) {
@@ -41,7 +40,6 @@ export default class SignUp extends Component<any, State> {
       // login with credential
       const currentUser = await firebase.auth().signInAndRetrieveDataWithCredential(credential)
     } catch (e) {
-      console.error(e)
     }
   }
 
@@ -64,7 +62,6 @@ export default class SignUp extends Component<any, State> {
   }
 
   render() {
-    console.log(firebase.auth())
     return (
       <View style={styles.container}>
         <Text>Sign Up</Text>
