@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import FirebaseChat from 'config/firebasechat'
 import {
   Modal,
   StyleSheet,
@@ -50,12 +51,12 @@ export default class CustomActions extends React.Component {
           case 1:
             navigator.geolocation.getCurrentPosition(
               (position) => {
-                this.props.onSend({
+                FirebaseChat.shared.send([{
                   location: {
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude,
                   },
-                });
+                }]);
               },
               (error) => alert(error.message),
               { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }

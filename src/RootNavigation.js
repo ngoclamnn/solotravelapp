@@ -24,7 +24,11 @@ const App = StackNavigator(
     }
   },
   {
-    initialRouteName: ROUTES.loading.routeName
+    initialRouteName: ROUTES.loading.routeName,
+    headerMode: 'none',
+    navigationOptions: {
+      headerVisible: false,
+    }
   }
 )
 export default App

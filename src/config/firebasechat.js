@@ -29,7 +29,7 @@ class FirebaseChat {
   }
 
   parse = snapshot => {
-    const { timestamp: numberStamp, text, user } = snapshot.val();
+    const { timestamp: numberStamp, text, user, location } = snapshot.val();
     const { key: _id } = snapshot;
     const timestamp = new Date(numberStamp);
     const message = {
@@ -37,6 +37,7 @@ class FirebaseChat {
       timestamp,
       text,
       user,
+      location,
       createdAt: Date.now()
     };
     return message;
@@ -53,11 +54,12 @@ class FirebaseChat {
   // send the message to the Backend
   send = messages => {
     for (let i = 0; i < messages.length; i++) {
-      const { text, user } = messages[i];
+      const { text, user, location } = messages[i];
       const message = {
         text,
         user,
         timestamp: this.timestamp,
+        location
       };
       this.append(message);
     }

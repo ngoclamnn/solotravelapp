@@ -12,6 +12,9 @@
       android:theme="@style/AppTheme">
       <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
+      <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB3RQYrqcIlk3RLSQLRJgC7SMP-ltfqdfw"/>
       <activity
         android:name="com.solotravellerapp.mytravelapp.MainActivity"
         android:label="@string/app_name"

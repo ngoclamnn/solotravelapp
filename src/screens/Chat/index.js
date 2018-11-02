@@ -1,5 +1,6 @@
 import React from 'react';
-import Firebasechat from 'config/firebasechat'
+import FirebaseChat from 'config/firebasechat'
+import firebase from 'react-native-firebase'
 import {
   Platform,
   StyleSheet,
@@ -39,7 +40,7 @@ export default class Example extends React.Component {
 
   }
   componentDidMount() {
-    Firebasechat.shared.on(message =>
+    FirebaseChat.shared.on(message =>
       this.setState(previousState => ({
         messages: GiftedChat.append(previousState.messages, message),
       }))
@@ -135,13 +136,13 @@ export default class Example extends React.Component {
   }
 
   renderCustomActions(props) {
-    if (Platform.OS === 'ios') {
-      return (
-        <CustomActions
-          {...props}
-        />
-      );
-    }
+    //if (Platform.OS === 'ios') {
+    return (
+      <CustomActions
+        {...props}
+      />
+    );
+    //}
     const options = {
       'Action 1': (props) => {
         alert('option 1');
@@ -218,7 +219,7 @@ export default class Example extends React.Component {
 
         user={{
           name: firebase.auth().currentUser.email,
-          _id: Fire.shared.uid,
+          _id: FirebaseChat.shared.uid,
         }}
 
         renderActions={this.renderCustomActions}
